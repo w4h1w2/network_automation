@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+
+def string_luong():
+    hostname1 = "R1"
+    hostname2 = "R2"
+    hostname3 = "R3"
+
+    ip_addr1 = "192.168.1.1"
+    ip_addr2 = "192.168.1.2"
+    ip_addr3 = "192.168.1.3"
+
+    #solution 1: tranditional way
+
+    print("Solution 1: Tranditional way")
+    print("Devices" + " "*14 + "Management IP")
+    print("-"*20 + " " + "-"*20)
+    print(hostname1 + " "*19 + ip_addr1 + "\n" + hostname2 + " "*19 + ip_addr2 + "\n" + hostname3 + " "*19 + ip_addr3)
+
+    #solution 2: using format method of string class
+
+    print("Solution 2: Using format method of string class")
+    print("{:<21}{}".format("Devices","Management IP"))
+    print("{:<21}{}".format(hostname1,ip_addr1) + "\n" + "{:<21}{}".format(hostname2,ip_addr2) + "\n" + "{:<21}{}".format(hostname3,ip_addr3))
+
+    #solution 3: using f-string
+
+    print("Solution 3: Using f-string")
+    print(f"{hostname1:<21}{ip_addr1}" + "\n" + f"{hostname2:<21}{ip_addr2}" + "\n" + f"{hostname3:<21}{ip_addr3}")
+
+
+def string_yen():
+    hostname1 = "R1"
+    hostname2 = "R2"
+    hostname3 = "R3"
+
+    ip_addr1 = "192.168.1.1"
+    ip_addr2 = "192.168.1.2"
+    ip_addr3 = "192.168.1.3"
+
+    print ("Solution 1: Traditional way")
+    print ("Devices" + " "*9 + "Management IP")
+    print ("."*15 +" " + "."*15)
+    print (hostname1 + " "*14 + ip_addr1)
+    print (hostname2 + " "*14 + ip_addr2)
+    print (hostname3 + " "*14 + ip_addr3 + "\n")
+
+
+    Dv = "Devices"
+    Mip = "Management IP"
+
+    print ("Solution 2: Using format method of string class")
+    print ("{:<15} {}".format(Dv,Mip))
+    print ("{:<15} {}".format('.'*15,'.'*15))
+    print ("{:<15} {}".format(hostname1,ip_addr1))
+    print ("{:<15} {}".format(hostname2,ip_addr2))
+    print ("{:<15} {}".format(hostname3,ip_addr3)+ "\n")
+
+
+    print ("Solution 3 : Using f-string")
+    print (f"{Dv:<15} {Mip}")
+    print (f"{'.'*15:<15} {'.'*15}")
+    print (f"{hostname1:<15} {ip_addr1}")
+    print (f"{hostname2:<15} {ip_addr2}")
+    print (f"{hostname3:<15} {ip_addr3}")
+
+def string_long():
+    hostname1 = "R1"
+    hostname2 = "R2"
+    hostname3 = "R3"
+
+    ip_addr1 = "192.68.1.1"
+    ip_addr2 = "192.68.1.2"
+    ip_addr3 = "192.68.1.3"
+    gach = "-"
+    dev = "Devices"
+    Mnt = "Management IP"
+    sp = " "
+    print("Solution 1 : Tradition way" )
+    print(dev,sp * 12 ,Mnt)
+    print(gach * 20,gach * 20)
+    print(hostname1, sp * 17, ip_addr1)
+    print(hostname2, sp * 17, ip_addr2)
+    print(hostname3, sp * 17, ip_addr3)
+    print()
+    print("Solution 2 : Using format method of string class" )
+    print(dev,sp * 12 ,Mnt)
+    print(gach * 20,gach * 20)
+    print("{:<21}{}".format(hostname1,ip_addr1))
+    print("{:<21}{}".format(hostname2,ip_addr2))
+    print("{:<21}{}".format(hostname3,ip_addr3))
+    print()
+    print("Solution 2 : Using f-string" )
+    print(dev,sp * 12 ,Mnt)
+    print(gach * 20,gach * 20)
+    print(f"{hostname1:<21}{ip_addr1}")
+    print(f"{hostname2:<21}{ip_addr2}")
+    print(f"{hostname3:<21}{ip_addr3}")
+
+
+def string_luan():
+    addr_1 = '192.168.1.1'
+    addr_2 = '192.168.1.2'
+    addr_3 = '192.168.1.3'
+
+    host1 = 'R1'
+    host2 = 'R2'
+    host3 = 'R3'
+
+    dash = '-'
+    number = 21
+    space = ' '
+    x = 'Devices'
+    y = 'Management IP'
+
+    #Solution 1
+    print ('Solution 1: Traditional way')
+    print (x + 15*' ' + y)
+    print (20*dash + ' ' + 20*dash)
+    print ('R1' + 20*' ' + addr_1)
+    print ('R2' + 20*' ' + addr_2)
+    print ('R3' + 20*' ' + addr_3)
+    print ('\n')
+
+    #Solution 2
+    print ('Solution 2: Using format method of string class')
+    print ("{:<{}} {}".format(x, number, y))
+    print ('{} {}'.format(20*dash, 20*dash))
+    print ("{:<{}} {}".format(host1, number, addr_1))
+    print ("{:<{}} {}".format(host2, number, addr_2))
+    print ("{:<{}} {}".format(host3, number, addr_3))
+    print ('\n')
+
+    #Solution 3
+    print ('Solution 3: Using f-string')
+    print (f'{x:<{number}} {y}')
+    print (f'{20*dash} {20*dash}')
+    print (f'{host1:<{number}} {addr_1}')
+    print (f'{host2:<{number}} {addr_2}')
+    print (f'{host3:<{number}} {addr_3}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

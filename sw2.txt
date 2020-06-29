@@ -1,0 +1,36 @@
+#!/usr/bin/env python2
+import telnetlib
+#
+devices = ["192.168.122.11", "192.168.122.12", "192.168.122.13"]
+username = raw_input("Enter your username: ")
+#
+for i in devices:
+    print("Connecting to {}...\n".format(i))
+    ts = telnetlib.Telnet(i, 23)
+    #
+    ts.read_until("Username:")
+    ts.write(username + "\n")                   
+    if password:                                           
+        ts.read_until("Password:")
+        ts.write(password + "\n")
+    #
+    print("Connected!\n")
+    #
+    print("Collecting current configuration...")
+    ts.write("terminal length 0\n")
+    ts.write("enable\n")
+    ts.write("cisco\n")
+    ts.write("show running-config\n")
+    ts.write("exit\n")
+    print("Done\n")
+    #
+    print("*"*24 + " Output of all operations " + "*"*24)
+    #
+    output=ts.read_all()
+    print(output)
+    #
+    print("Saving configuration to file...")
+    f=open("z_output.txt", "wt")
+    f.write(output)
+    f.close()
+    print("Done\n")

@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+
+#import telnetlib
+#import getpass
+
+#ip_addr = "192.168.122.11"
+#port = 23
+#username = "cisco"
+#password= "cisco"
+
+#ts = telnetlib.Telnet(ip_addr, port)                        #make connection to device
+
+#ts.read_until(b"Username:")                                 #b means "bytes"?
+#ts.write(username.encode("ascii") + b"\n")                  #must have "\n", "ascii" or "utf-8"? 
+#if password:                                                #may remove this line?
+#    ts.read_until(b"Password:")
+#    ts.write(password.encode("ascii") + b"\n") 
+
+#ts.write(b"terminal length 0\n")
+#ts.write(b"enable\n")
+#ts.write(password.encode("ascii") + b"\n")
+#ts.write(b"show version\n")
+#ts.write(b"exit\n")
+#output = ts.read_all().decode("ascii")
+#print(output)
+
+##############version2###############
+#!/usr/bin/env python3
+
+import telnetlib
+import getpass
+
+ip_addr = input("Enter ip address: ")
+port = input("Enter port number: ")
+username = input("Enter your username: ")
+password= getpass.getpass("Enter your password: ")
+
+print("Connecting to {} with port number {} ...".format(ip_addr, port))
+ts = telnetlib.Telnet(ip_addr, port)             #make connection to device
+
+#try:
+#    ts = telnetlib.Telnet(ip_addr, port)                        
+#except:
+#    sys.exit("Can not connect to device...stopped.")
+
+ts.read_until(b"Username:")                                 #b means "bytes"?
+ts.write(username.encode("ascii") + b"\n")                  #must have "\n", "ascii" or "utf-8"? 
+if password:                                                #may remove this line?
+    ts.read_until(b"Password:")
+    ts.write(password.encode("ascii") + b"\n") 
+
+ts.write(b"terminal length 0\n")
+ts.write(b"enable\n")
+ts.write(password.encode("ascii") + b"\n")
+ts.write(b"show version\n")
+ts.write(b"exit\n")
+output = ts.read_all().decode("ascii")
+print(output)
+

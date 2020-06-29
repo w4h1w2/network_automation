@@ -1,0 +1,52 @@
+
+import telnetlib
+import getpass
+
+#ipaddr = raw_input("Please enter ip address: ")
+ipaddr = "192.168.122.11"
+
+# username = "cisco"
+username = input("Username: ")
+
+# password = "cisco"
+password= getpass.getpass()
+
+#
+
+#
+telnetsession.read_until(b"Username:")
+telnetsession.write(username.encode("utf-8") + b"\n")                   
+if password:                                           
+    telnetsession.read_until(b"Password:")
+    telnetsession.write(password.encode("utf-8") + b"\n")
+#
+print("Connected!\n")
+#
+print("Collecting current configuration...")
+telnetsession.write(b"terminal length 0\n")
+telnetsession.write(b"enable\n")
+telnetsession.write(b"cisco\n")
+telnetsession.write(b"show running-config\n")
+telnetsession.write(b"exit\n")
+print("Done\n")
+#
+print("*"*74)
+print("*"*24 + " Output of all operations " + "*"*24) 
+print("*"*74)
+#output1 screen; byte --> str
+output=telnetsession.read_all().decode()
+print(output)
+
+#output2 file
+print("Saving configuration to file...")
+f=open("z_output.txt", "wt")
+f.write(output)
+f.close()
+print("Done\n")
+#
+
+
+
+
+
+

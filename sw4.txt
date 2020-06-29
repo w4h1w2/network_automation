@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+from netmiko import ConnectHandler
+import getpass
+#
+devices = ["192.168.122.11", "192.168.122.12", "192.168.122.13"]
+username = input("Username: ")
+password = getpass.getpass("Password: ")
+print()
+#
+for device in devices:
+    print("Connecting to {}...\n".format(device))
+    ssh_session = ConnectHandler(host=device, username=username, password=password, secret=password, device_type = "cisco_ios")
+    print("Connected!\n")
+    #
+    print("Entering enable mode...")
+    ssh_session.enable()
+    print(ssh_session.find_prompt())
+    print("Done\n")
+    #
+    print("Collecting current configuration...")
+    output = ssh_session.send_command("show running-config")
+    print("Done\n")
+    #
+    print("Writing output down to a file...")
+    filename = datetime.datetime.now().strftime("output_{}_%Y%m%d_%H%M%S.txt".format(device))
+    f = open(filename, "wt")
+    f.write(output)
+    f.close()
+    print("Done\n")
+    #
+    ssh_session.disconnect()
